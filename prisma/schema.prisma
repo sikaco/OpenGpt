@@ -3,10 +3,11 @@
 
 generator client {
     provider = "prisma-client-js"
+    output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
-    provider     = "mysql"
+    provider     = "sqlite"
     // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
     // Further reading:
     // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
@@ -72,8 +73,8 @@ model OpenGptApp {
     description  String
     icon         String // for example emoji
     hint         String?
-    demoInput    String  @db.VarChar(1000)
-    prompt       String  @db.VarChar(10000)
+    demoInput    String
+    prompt       String
     usedCount    BigInt  @default(1)
     paidUseCount BigInt  @default(1)
     shouldHide   Boolean @default(false)
